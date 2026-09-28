@@ -1,0 +1,42 @@
+appId: com.jacsystems.sistema-cursos
+productName: Sistema Gestión Educativa
+copyright: Copyright © 2026 JAC Systems
+
+directories:
+  output: release
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+
+extraResources:
+  - from: node_modules/sql.js/dist
+    to: sql-wasm
+    filter:
+      - "sql-wasm.wasm"
+      - "sql-wasm.js"
+  - from: electron/database
+    to: database
+    filter:
+      - "**/*.sql"
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: build/icon.ico
+  requestedExecutionLevel: asInvoker
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Sistema Educativo
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  deleteAppDataOnUninstall: false
+
+asar: true
